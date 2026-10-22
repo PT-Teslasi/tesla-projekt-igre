@@ -1,0 +1,1076 @@
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0D0717;
+    color: #FFFFFF;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+input, select {
+    font-family: inherit;
+    outline: none;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #1A102A;
+}
+::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 3px;
+}
+
+/* ===== HEADER ===== */
+.header {
+    background-color: #1A102A;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 64px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.header-nav a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    transition: color 0.2s;
+    position: relative;
+    padding: 20px 0;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+    color: #FFD700;
+}
+
+.header-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #FFD700;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-logo .logo-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #FFD700;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1A102A;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.header-logo .logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-outline {
+    padding: 10px 24px;
+    border: 1.5px solid #FFFFFF;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    border-color: #FFD700;
+    color: #FFD700;
+}
+
+.btn-primary {
+    padding: 10px 24px;
+    background-color: #FFD700;
+    color: #1A102A;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #FFE44D;
+    transform: translateY(-1px);
+}
+
+/* ===== SPORTS TICKER ===== */
+.sports-ticker {
+    background-color: #FFD700;
+    padding: 8px 0;
+    overflow: hidden;          /* bilo: overflow-x: auto */
+    white-space: nowrap;
+}
+.sports-ticker::-webkit-scrollbar {
+    display: none;
+}
+
+.sports-ticker-inner {
+    display: inline-flex;
+    gap: 24px;
+    padding-right: 24px;       /* da razmak između dve kopije bude isti kao gap */
+    animation: ticker 10s linear infinite;
+}
+
+@keyframes ticker {
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #1A102A;
+    white-space: nowrap;
+}
+
+.ticker-item .ticker-odds {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.main-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* ===== LEFT COLUMN ===== */
+.hero-section {
+    margin-bottom: 32px;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+}
+
+.hero-title .highlight {
+    color: #FFD700;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+/* Steps */
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background-color: #1A102A;
+    border: 1px solid rgba(255, 215, 0, 0.08);
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+.step-item:hover {
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #FFD700;
+    color: #1A102A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.step-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== ODDS SECTION ===== */
+.odds-section {
+    background-color: #1A102A;
+    border: 1.5px solid #FFD700;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+}
+
+.odds-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.odds-header h3 {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #FFD700;
+}
+
+.odds-match {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.odds-match .vs {
+    color: #FFD700;
+    font-size: 12px;
+}
+
+.odds-meta {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 16px;
+}
+
+.odds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.odd-card {
+    background-color: #0D0717;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.odd-card:hover {
+    border-color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+.odd-card .odd-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.odd-card .odd-value {
+    font-size: 22px;
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+}
+
+.odd-card:hover .odd-value {
+    color: #FFD700;
+}
+
+/* ===== FEATURES ROW ===== */
+.features-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.feature-card {
+    background-color: #1A102A;
+    border: 1px solid rgba(255, 215, 0, 0.08);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: border-color 0.2s;
+}
+
+.feature-card:hover {
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.feature-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background-color: rgba(255, 215, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFD700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.feature-text h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.feature-text p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+}
+
+/* ===== POPULAR MATCHES ===== */
+.matches-section {
+    margin-bottom: 20px;
+}
+
+.matches-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.matches-header h3 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+}
+
+.matches-header a {
+    font-size: 11px;
+    font-weight: 600;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.matches-header a:hover {
+    text-decoration: underline;
+}
+
+.match-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.match-row:last-child {
+    border-bottom: none;
+}
+
+.match-teams {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    min-width: 160px;
+}
+
+.match-odds {
+    display: flex;
+    gap: 8px;
+}
+
+.match-odd {
+    padding: 6px 14px;
+    background-color: #1A102A;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 52px;
+    text-align: center;
+}
+
+.match-odd:hover {
+    border-color: #FFD700;
+    color: #FFD700;
+}
+
+/* ===== RIGHT COLUMN - FORM ===== */
+.form-panel {
+    background-color: #1A102A;
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    border-radius: 12px;
+    padding: 28px;
+    position: sticky;
+    top: 100px;
+}
+
+.form-panel h2 {
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.form-panel .form-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+.form-section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #FFD700;
+    margin-bottom: 14px;
+    margin-top: 20px;
+}
+
+.form-section-label:first-of-type {
+    margin-top: 0;
+}
+
+.form-section-label .label-number {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #FFD700;
+    color: #1A102A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px 14px;
+    background-color: #0D0717;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #FFFFFF;
+    transition: border-color 0.2s;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #FFD700;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFD700' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+}
+
+.form-group select option {
+    background-color: #1A102A;
+    color: #FFFFFF;
+}
+
+/* File upload */
+.file-upload {
+    border: 1.5px dashed rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+}
+
+.file-upload:hover {
+    border-color: #FFD700;
+}
+
+.file-upload i {
+    font-size: 20px;
+    color: #FFD700;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.file-upload .upload-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.file-upload .upload-hint {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #FFD700;
+    margin-top: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.checkbox-group label a {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+/* Submit button */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #FFD700;
+    color: #1A102A;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    margin-bottom: 14px;
+}
+
+.btn-submit:hover {
+    background-color: #FFE44D;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-footer i {
+    color: #FFD700;
+    font-size: 10px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: #1A102A;
+    border-top: 1px solid rgba(255, 215, 0, 0.08);
+    padding: 48px 32px 24px;
+}
+
+.footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.footer-brand .footer-logo .logo-icon {
+    width: 28px;
+    height: 28px;
+    background-color: #FFD700;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1A102A;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.footer-brand .footer-logo .logo-text {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+}
+
+.footer-brand p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social a {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.footer-social a:hover {
+    background-color: #FFD700;
+    color: #1A102A;
+}
+
+.footer-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #FFFFFF;
+    margin-bottom: 18px;
+}
+
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col ul a {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.2s;
+}
+
+.footer-col ul a:hover {
+    color: #FFD700;
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-bottom a:hover {
+    color: #FFD700;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+    .main-wrapper {
+        grid-template-columns: 1fr 340px;
+        gap: 24px;
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .header-top {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .form-panel {
+        position: static;
+        order: -1;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .header-logo {
+        position: static;
+        transform: none;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+
+    .features-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-top {
+        height: 56px;
+        padding: 0 16px;
+    }
+
+    .header-actions .btn-outline {
+        display: none;
+    }
+
+    .header-actions .btn-primary {
+        padding: 8px 16px;
+        font-size: 10px;
+    }
+
+    .header-logo .logo-text {
+        font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+    }
+
+    .main-wrapper {
+        padding: 0 16px;
+        margin-top: 24px;
+    }
+
+    .odds-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .odd-card .odd-value {
+        font-size: 18px;
+    }
+
+    .match-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .match-odds {
+        width: 100%;
+    }
+
+    .match-odd {
+        flex: 1;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .sports-ticker-inner {
+        padding: 0 16px;
+        gap: 16px;
+    }
+}
+/* ============================================================
+   TESLA BET - Login (dodaci uz style.css)
+   ============================================================ */
+
+/* Dugmad u headeru su sada linkovi (a), pa im treba isti izgled */
+a.btn-outline,
+a.btn-primary {
+    display: inline-block;
+    text-align: center;
+}
+
+.login-panel {
+    padding: 0;
+    overflow: hidden;
+}
+
+.login-panel h2 {
+    padding: 24px 28px 0;
+}
+
+.login-panel .form-subtitle {
+    padding: 0 28px 18px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.login-panel .form-section-label {
+    margin: 18px 28px 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.login-panel .form-section-label .label-number {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+}
+
+.login-panel .form-group,
+.login-panel .login-options,
+.login-panel .btn-submit,
+.login-panel .form-footer {
+    margin-left: 28px;
+    margin-right: 28px;
+}
+
+.login-panel .btn-submit {
+    width: calc(100% - 56px);
+}
+
+/* Polje za šifru sa dugmetom "Prikaži" */
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap input {
+    padding-right: 80px;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.toggle-pass:hover {
+    color: #FFD700;
+}
+
+/* Zapamti me + zaboravljena šifra */
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin-bottom: 18px;
+}
+
+.login-options .checkbox-group {
+    margin-bottom: 0;
+    align-items: center;
+}
+
+.forgot-link {
+    font-size: 11px;
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+/* Poruka o grešci (pravi je JS) */
+.login-panel .js-poruka {
+    margin: 14px 28px 0;
+}
+
+/* Dno forme */
+.login-switch {
+    margin-top: 18px;
+    padding: 18px 28px 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.login-switch a {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+.login-switch a:hover {
+    text-decoration: underline;
+}
+
+.form-footer {
+    margin-bottom: 0;
+}
