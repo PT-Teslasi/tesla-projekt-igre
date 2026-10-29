@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesla Bet - Prijava</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="loginStrana.css">
 </head>
 <body>
@@ -16,36 +14,46 @@
     <header class="header">
         <div class="header-top">
             <nav class="header-nav">
-                <a href="#" class="active">Sport</a>
+                <a href="#">Sport</a>
                 <a href="#">Uživo</a>
                 <a href="#">Kasino</a>
                 <a href="#">Virtuelni</a>
                 <a href="#">Promocije</a>
             </nav>
 
-            <div class="header-logo">
-                <div class="logo-icon"><a href="/pocetnaStrana/pocetnaStrana.html">⚡</a></div>
-                <div class="logo-text"><a href="/pocetnaStrana/pocetnaStrana.html">TESLA BET</a></div>
-            </div>
+            <a href="/wwwroot/index.html" class="header-logo">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">Tesla <span class="yellow">Bet</span></div>
+            </a>
 
             <div class="header-actions">
-                <a href="loginStrana.html" class="btn-outline">Prijavi se</a>
-                <a href="/registracionaStrana.html" class="btn-primary">Registruj se</a>
+                <a href="/wwwroot/loginStrana/loginStrana.html" class="btn-outline">Prijavi se</a>
+                <a href="/wwwroot/registracionaStrana.html" class="btn-primary">Registruj se</a>
             </div>
         </div>
     </header>
 
-    <!-- ===== SPORTS TICKER ===== -->
+    <!-- ===== ŽUTA TRAKA ===== -->
     <div class="sports-ticker">
         <div class="sports-ticker-inner">
-            <div class="ticker-item"><span>Partizan – Crvena zvezda</span><span class="ticker-odds">2.10 / 3.20 / 3.05</span></div>
-            <div class="ticker-item"><span>Man City – Arsenal</span><span class="ticker-odds">1.85 / 3.60 / 4.10</span></div>
-            <div class="ticker-item"><span>Real Madrid – Barselona</span><span class="ticker-odds">2.30 / 3.40 / 3.10</span></div>
-            <div class="ticker-item"><span>Novak Đoković – Carlos Alcaraz</span><span class="ticker-odds">1.75 / 2.15</span></div>
-            <div class="ticker-item"><span>Bajern – Dortmund</span><span class="ticker-odds">1.65 / 3.80 / 4.50</span></div>
-            <div class="ticker-item"><span>PSG – Marseille</span><span class="ticker-odds">1.55 / 3.90 / 5.00</span></div>
-            <div class="ticker-item"><span>Liverpool – Chelsea</span><span class="ticker-odds">2.05 / 3.30 / 3.25</span></div>
-            <div class="ticker-item"><span>Juventus – Inter</span><span class="ticker-odds">2.45 / 3.10 / 2.80</span></div>
+            <span class="ticker-item"><strong>Kvote danas</strong></span>
+            <span class="ticker-item">Partizan - Crvena zvezda &nbsp; 2.10 / 3.20 / 3.05</span>
+            <span class="ticker-item">Man City - Arsenal &nbsp; 1.95 / 3.50 / 4.10</span>
+            <span class="ticker-item">Real Madrid - Barcelona &nbsp; 2.30 / 3.40 / 3.10</span>
+            <span class="ticker-item">Novak Đoković - Carlos Alcaraz &nbsp; 1.70 / 2.15</span>
+            <span class="ticker-item">Bayern - Dortmund &nbsp; 1.65 / 3.80 / 4.50</span>
+            <span class="ticker-item">PSG - Marseille &nbsp; 1.55 / 3.90 / 5.00</span>
+            <span class="ticker-item">Liverpool - Chelsea &nbsp; 2.05 / 3.30 / 3.25</span>
+
+            <!-- Duplirano za neprekidnu animaciju -->
+            <span class="ticker-item"><strong>Kvote danas</strong></span>
+            <span class="ticker-item">Partizan - Crvena zvezda &nbsp; 2.10 / 3.20 / 3.05</span>
+            <span class="ticker-item">Man City - Arsenal &nbsp; 1.95 / 3.50 / 4.10</span>
+            <span class="ticker-item">Real Madrid - Barcelona &nbsp; 2.30 / 3.40 / 3.10</span>
+            <span class="ticker-item">Novak Đoković - Carlos Alcaraz &nbsp; 1.70 / 2.15</span>
+            <span class="ticker-item">Bayern - Dortmund &nbsp; 1.65 / 3.80 / 4.50</span>
+            <span class="ticker-item">PSG - Marseille &nbsp; 1.55 / 3.90 / 5.00</span>
+            <span class="ticker-item">Liverpool - Chelsea &nbsp; 2.05 / 3.30 / 3.25</span>
         </div>
     </div>
 
@@ -151,7 +159,7 @@
             </div>
 
             <div class="login-switch">
-                Nemaš nalog? <a href="registracija.html">Registruj se</a>
+                Nemaš nalog? <a href="/registracionaStrana/registracionaStrana.html">Registruj se</a>
             </div>
         </aside>
     </main>

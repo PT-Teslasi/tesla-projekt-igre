@@ -47,6 +47,11 @@ input, select {
 }
 
 /* ===== HEADER ===== */
+.header, .sports-ticker {
+    font-family: 'Barlow Condensed', sans-serif;
+    line-height: 1.4;
+}
+
 .header {
     background-color: #1A102A;
     border-bottom: 1px solid rgba(255, 215, 0, 0.1);
@@ -59,10 +64,11 @@ input, select {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
+    padding: 0 20px;
     height: 64px;
-    max-width: 1400px;
+    max-width: 1000px;
     margin: 0 auto;
+    position: relative;
 }
 
 .header-nav {
@@ -72,14 +78,14 @@ input, select {
 }
 
 .header-nav a {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: #FFFFFF;
     transition: color 0.2s;
     position: relative;
-    padding: 20px 0;
+    padding: 22px 0;
 }
 
 .header-nav a:hover,
@@ -115,15 +121,20 @@ input, select {
     align-items: center;
     justify-content: center;
     color: #1A102A;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 900;
 }
 
 .header-logo .logo-text {
-    font-size: 18px;
-    font-weight: 800;
+    font-size: 22px;
+    font-weight: 700;
     letter-spacing: 1px;
     color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.header-logo .logo-text .yellow {
+    color: #FFD700;
 }
 
 .header-actions {
@@ -132,17 +143,23 @@ input, select {
     gap: 12px;
 }
 
-.btn-outline {
+.btn-outline,
+.btn-primary {
+    display: inline-block;
     padding: 10px 24px;
-    border: 1.5px solid #FFFFFF;
-    background: transparent;
-    color: #FFFFFF;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
     border-radius: 4px;
     transition: all 0.2s;
+    line-height: 1.2;
+}
+
+.btn-outline {
+    border: 1.5px solid #FFFFFF;
+    background: transparent;
+    color: #FFFFFF;
 }
 
 .btn-outline:hover {
@@ -151,15 +168,8 @@ input, select {
 }
 
 .btn-primary {
-    padding: 10px 24px;
     background-color: #FFD700;
     color: #1A102A;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    border-radius: 4px;
-    transition: all 0.2s;
 }
 
 .btn-primary:hover {
@@ -167,52 +177,44 @@ input, select {
     transform: translateY(-1px);
 }
 
-/* ===== SPORTS TICKER ===== */
-
-
-
-
-
-
-
+/* ===== ŽUTA TRAKA (TICKER) ===== */
 .sports-ticker {
     background-color: #FFD700;
     padding: 8px 0;
-    overflow: hidden;          /* bilo: overflow-x: auto */
+    overflow: hidden;
     white-space: nowrap;
-}
-.sports-ticker::-webkit-scrollbar {
-    display: none;
 }
 
 .sports-ticker-inner {
     display: inline-flex;
-    gap: 24px;
-    padding-right: 24px;       /* da razmak između dve kopije bude isti kao gap */
-    animation: ticker 10s linear infinite;
+    gap: 40px;
+    padding-right: 40px;
+    animation: ticker 40s linear infinite;
+}
+
+.sports-ticker:hover .sports-ticker-inner {
+    animation-play-state: paused;
 }
 
 @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
 
 .ticker-item {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     color: #1A102A;
     white-space: nowrap;
 }
 
-.ticker-item .ticker-odds {
-    background-color: rgba(0, 0, 0, 0.15);
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-size: 10px;
+.ticker-item strong {
     font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 /* ===== MAIN LAYOUT ===== */
@@ -226,8 +228,6 @@ input, select {
     margin-top: 40px;
     margin-bottom: 60px;
 }
-
-
 
 /* ===== LEFT COLUMN ===== */
 .hero-section {
@@ -850,10 +850,6 @@ input, select {
     .hero-title {
         font-size: 38px;
     }
-
-    .header-top {
-        padding: 0 20px;
-    }
 }
 
 @media (max-width: 900px) {
@@ -895,13 +891,8 @@ input, select {
         display: none;
     }
 
-    .header-actions .btn-primary {
-        padding: 8px 16px;
-        font-size: 10px;
-    }
-
     .header-logo .logo-text {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .hero-title {
@@ -953,10 +944,5 @@ input, select {
         flex-direction: column;
         gap: 8px;
         text-align: center;
-    }
-
-    .sports-ticker-inner {
-        padding: 0 16px;
-        gap: 16px;
     }
 }
