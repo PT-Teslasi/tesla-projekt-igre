@@ -185,3 +185,11 @@ form.addEventListener("keydown", (e) => {
         posalji();
     }
 });
+
+let matchOdds = document.getElementsByClassName("match-odd");
+console.log(matchOdds);
+for(let i = 0; i< matchOdds.length; i++) {
+    matchOdds[i].addEventListener("click", function(){
+        this.classList.add("active");
+    })
+}
