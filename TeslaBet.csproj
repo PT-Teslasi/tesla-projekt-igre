@@ -5,6 +5,8 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <RootNamespace>TeslaBet</RootNamespace>
+    <!-- ne kopiraj 10 foldera sa prevodima SqlClient-a (ostaje engleski) -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
 
   <ItemGroup>

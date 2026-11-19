@@ -1,0 +1,279 @@
+/* ============================================================
+   TESLA BET - stranice "Igre" i "Igra"
+   (koristi se uz pocetnaStrana.css, koji ima header, ticker i footer)
+   ============================================================ */
+
+/* ===== NASLOV + SORTIRANJE ===== */
+.igre-hero {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 40px 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.igre-hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.igre-hero h1 .yellow {
+    color: var(--card-yellow);
+}
+
+.igre-hero p {
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.sort-select {
+    appearance: none;
+    background-color: var(--bg-header);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 11px 40px 11px 14px;
+    min-width: 190px;
+    cursor: pointer;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFD700' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color 0.2s;
+}
+
+.sort-select:hover,
+.sort-select:focus {
+    border-color: var(--primary-yellow);
+}
+
+.sort-select option {
+    background-color: var(--bg-header);
+    color: var(--text-light);
+}
+
+/* ===== MREŽA IGARA ===== */
+.games-grid {
+    max-width: var(--container);
+    margin: 32px auto 0;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 16px;
+}
+
+/* cela kartica (slika + naziv) je link i skalira se zajedno */
+.game-card {
+    display: block;
+    position: relative;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transform-origin: center;
+}
+
+.game-card:focus-visible {
+    outline: none;
+    border-color: var(--primary-yellow);
+}
+
+@media (hover: hover) {
+    .game-card:hover,
+    .game-card:focus-visible {
+        transform: scale(1.2);
+        z-index: 5;
+        border-color: var(--card-yellow);
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* ===== SLIKA IGRE (pozadina kartice) ===== */
+.game-image,
+.stage-image {
+    position: relative;
+    background-color: var(--c, #2a2070);
+    overflow: hidden;
+}
+
+.game-image {
+    aspect-ratio: 1 / 1;
+}
+
+.game-image img,
+.stage-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* kad slika ne postoji, prikazuje se oblik na boji */
+.game-image.no-img::after,
+.stage-image.no-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 46%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--card-yellow);
+}
+
+.game-image.no-img[data-oblik="krug"]::after,
+.stage-image.no-img[data-oblik="krug"]::after {
+    border-radius: 50%;
+}
+
+.game-image.no-img[data-oblik="kvadrat"]::after,
+.stage-image.no-img[data-oblik="kvadrat"]::after {
+    border-radius: 14%;
+}
+
+.game-image.no-img[data-oblik="trougao"]::after,
+.stage-image.no-img[data-oblik="trougao"]::after {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.rank-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    background-color: var(--card-yellow);
+    color: var(--bg-dark);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 2px 9px;
+    border-radius: 4px;
+}
+
+/* ===== NAZIV ISPOD SLIKE ===== */
+.game-info {
+    padding: 12px 12px 14px;
+}
+
+.game-name {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.game-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.game-plays {
+    color: var(--card-yellow);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ===== STRANICA JEDNE IGRE ===== */
+.igra-wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 32px 20px 0;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--card-yellow);
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary-yellow-hover);
+}
+
+.igra-wrap h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.igra-wrap .igra-subtitle {
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.game-stage {
+    position: relative;
+    margin-top: 28px;
+    min-height: 420px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--bg-panel);
+}
+
+.stage-image {
+    position: absolute;
+    inset: 0;
+}
+
+.stage-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(13, 7, 23, 0.55);
+}
+
+.stage-message {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    z-index: 2;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .games-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 800px) {
+    .games-grid { grid-template-columns: repeat(3, 1fr); }
+    .igre-hero h1 { font-size: 48px; }
+}
+
+@media (max-width: 600px) {
+    .games-grid { grid-template-columns: repeat(2, 1fr); }
+    .igre-hero { padding-top: 28px; }
+    .igre-hero h1 { font-size: 38px; }
+    .igra-wrap h1 { font-size: 38px; }
+    .game-stage { min-height: 300px; }
+}

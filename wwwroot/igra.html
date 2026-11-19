@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Bet - Igra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pocetnaStrana.css">
+    <link rel="stylesheet" href="igraStrana.css">
+</head>
+<body class="igra-strana">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-top">
+            <nav class="header-nav">
+                <a href="index.html">Sport</a>
+                <a href="#">Uživo</a>
+                <a href="#">Kasino</a>
+                <a href="igre.html" class="active">Igre</a>
+                <a href="#">Virtuelni</a>
+                <a href="#">Promocije</a>
+            </nav>
+
+            <a href="index.html" class="header-logo">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">Tesla <span class="yellow">Bet</span></div>
+            </a>
+
+            <div class="header-actions">
+                <a href="loginStrana.html" class="btn-outline">Prijavi se</a>
+                <a href="registracionaStrana.html" class="btn-primary">Registruj se</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== TICKER ===== -->
+    <div class="sports-ticker">
+        <div class="sports-ticker-inner">
+            <span class="ticker-item"><strong>Kvote danas</strong></span>
+            <span class="ticker-item">Partizan - Crvena zvezda &nbsp; 2.10 / 3.20 / 3.05</span>
+            <span class="ticker-item">Man City - Arsenal &nbsp; 1.95 / 3.50 / 4.10</span>
+            <span class="ticker-item">Real Madrid - Barcelona &nbsp; 2.30 / 3.40 / 3.10</span>
+            <span class="ticker-item">Novak Đoković - Carlos Alcaraz &nbsp; 1.70 / 2.15</span>
+            <span class="ticker-item">Bayern - Dortmund &nbsp; 1.65 / 3.80 / 4.50</span>
+            <span class="ticker-item">PSG - Marseille &nbsp; 1.55 / 3.90 / 5.00</span>
+            <span class="ticker-item">Liverpool - Chelsea &nbsp; 2.05 / 3.30 / 3.25</span>
+
+            <!-- Duplirano za neprekidnu animaciju -->
+            <span class="ticker-item"><strong>Kvote danas</strong></span>
+            <span class="ticker-item">Partizan - Crvena zvezda &nbsp; 2.10 / 3.20 / 3.05</span>
+            <span class="ticker-item">Man City - Arsenal &nbsp; 1.95 / 3.50 / 4.10</span>
+            <span class="ticker-item">Real Madrid - Barcelona &nbsp; 2.30 / 3.40 / 3.10</span>
+            <span class="ticker-item">Novak Đoković - Carlos Alcaraz &nbsp; 1.70 / 2.15</span>
+            <span class="ticker-item">Bayern - Dortmund &nbsp; 1.65 / 3.80 / 4.50</span>
+            <span class="ticker-item">PSG - Marseille &nbsp; 1.55 / 3.90 / 5.00</span>
+            <span class="ticker-item">Liverpool - Chelsea &nbsp; 2.05 / 3.30 / 3.25</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- ===== BANER IGRE (popunjava igra.js prema ?igra=...) ===== -->
+        <section class="igra-hero">
+            <div class="hero-image" id="gameBg"></div>
+
+            <div class="igra-hero-inner">
+                <a href="igre.html" class="back-btn">‹ Nazad na igre</a>
+
+                <div class="igra-hero-bottom">
+                    <div class="igra-main">
+                        <h1 id="gameTitle">Igra</h1>
+                        <div class="igra-meta">
+                            <span id="gameGenre"></span>
+                            <span class="plays" id="gamePlays"></span>
+                        </div>
+                        <button class="btn-play" id="btnPlay" type="button">Igraj sada</button>
+                    </div>
+
+                    <aside class="igra-about">
+                        <h4>O igri</h4>
+                        <p id="gameDesc"></p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROSTOR ZA IGRU (otvara se na "Igraj sada") ===== -->
+        <section class="igra-play" id="igraProstor" hidden>
+            <div class="play-box">Igra se uskoro učitava</div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-icon">⚡</div>
+                    <div class="logo-text">TESLA BET</div>
+                </div>
+                <p>Licenciran od strane Uprave za igre na sreću Republike Srbije. Igrajte odgovorno.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col"><h4>O nama</h4><ul><li><a href="#">Kako radimo</a></li><li><a href="#">Karijere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+            <div class="footer-col"><h4>Pomoć</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Pravila igre</a></li></ul></div>
+            <div class="footer-col"><h4>Pravno</h4><ul><li><a href="#">Uslovi korišćenja</a></li><li><a href="#">Politika privatnosti</a></li><li><a href="#">Lokacije</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Teslabid d.o.o. Sva prava zadržana.</span>
+            <span>Licenca broj: 0000/2024, Beograd, Srbija</span>
+        </div>
+    </footer>
+
+    <script src="igre-podaci.js"></script>
+    <script src="igra.js"></script>
+</body>
+</html>

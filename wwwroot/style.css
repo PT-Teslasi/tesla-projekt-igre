@@ -66,7 +66,7 @@ input, select {
     justify-content: space-between;
     padding: 0 20px;
     height: 64px;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     position: relative;
 }
@@ -365,6 +365,16 @@ input, select {
     background-color: rgba(255, 215, 0, 0.05);
 }
 
+.odd-card.active {
+    border-color: #FFD700;
+    background-color: #FFD700;
+}
+
+.odd-card.active .odd-label,
+.odd-card.active .odd-value {
+    color: #0D0717;
+}
+
 .odd-card .odd-label {
     font-size: 10px;
     font-weight: 700;
@@ -507,6 +517,12 @@ input, select {
 .match-odd:hover {
     border-color: #FFD700;
     color: #FFD700;
+}
+
+.match-odd.active {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #0D0717;
 }
 
 /* ===== RIGHT COLUMN - FORM ===== */
@@ -946,3 +962,4 @@ input, select {
         text-align: center;
     }
 }
+

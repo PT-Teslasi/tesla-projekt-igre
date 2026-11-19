@@ -1,0 +1,227 @@
+/* ============================================================
+   TESLA BET - stranica jedne igre (igra.html)
+   (koristi se uz pocetnaStrana.css, koji ima header, ticker i footer)
+   ============================================================ */
+
+/* footer odmah ispod banera */
+body.igra-strana .footer {
+    margin-top: 0;
+}
+
+/* ===== BANER ===== */
+.igra-hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* slika igre kao pozadina banera */
+.hero-image {
+    position: absolute;
+    inset: 0;
+    background-color: var(--c, #2a2070);
+}
+
+.hero-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* utapanje slike u tamnu pozadinu pri dnu */
+.hero-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 7, 23, 0) 25%,
+        rgba(13, 7, 23, 0.85) 70%,
+        var(--bg-dark) 100%
+    );
+}
+
+/* kad slika ne postoji: oblik na boji */
+.hero-image.no-img::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--card-yellow);
+}
+
+.hero-image.no-img[data-oblik="krug"]::after {
+    border-radius: 50%;
+}
+
+.hero-image.no-img[data-oblik="kvadrat"]::after {
+    border-radius: 14%;
+}
+
+.hero-image.no-img[data-oblik="trougao"]::after {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* ===== SADRŽAJ BANERA ===== */
+.igra-hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 14px 20px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.back-btn {
+    align-self: flex-start;
+    background-color: var(--bg-header);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+}
+
+.igra-hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+}
+
+.igra-main h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.igra-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.igra-meta .plays {
+    color: var(--card-yellow);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.btn-play {
+    margin-top: 18px;
+    padding: 14px 36px;
+    background-color: var(--card-yellow);
+    color: var(--bg-dark);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-play:hover {
+    background-color: var(--primary-yellow-hover);
+    transform: translateY(-1px);
+}
+
+/* ===== KUTIJA "O IGRI" ===== */
+.igra-about {
+    background-color: #1a1440;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 18px 22px 22px;
+    min-height: 104px;
+}
+
+.igra-about h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.igra-about p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* ===== PROSTOR ZA IGRU (otvara se na "Igraj sada") ===== */
+.igra-play {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 8px 20px 60px;
+}
+
+.igra-play[hidden] {
+    display: none;
+}
+
+.play-box {
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+    .igra-hero-bottom {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .igra-main h1 {
+        font-size: 48px;
+    }
+
+    .igra-hero {
+        min-height: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .igra-main h1 {
+        font-size: 38px;
+    }
+
+    .hero-image.no-img::after {
+        width: 120px;
+    }
+}

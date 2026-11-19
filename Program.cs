@@ -25,8 +25,12 @@ namespace TeslaBet
             builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
                 p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
+            // Kompresija odgovora (HTML/CSS/JS/JSON) - manji prenos, brze ucitavanje
+            builder.Services.AddResponseCompression();
+
             var app = builder.Build();
 
+            app.UseResponseCompression();
             app.UseCors();
             app.UseDefaultFiles();   // / -> wwwroot/index.html
             app.UseStaticFiles();    // servira wwwroot
@@ -76,11 +80,13 @@ namespace TeslaBet
                     if (!saglasnost)
                         return Results.BadRequest(new { greska = "Morate prihvatiti uslove." });
 
-                    // --- provera zauzetosti ---
-                    if (Baza.Postoji("Username", username))
+                    // --- provera zauzetosti (jedan upit u bazu) ---
+                    int zauzeto = await Baza.ProveriZauzetostAsync(username, email);
+
+                    if (zauzeto == Baza.UsernameZauzet)
                         return Results.Conflict(new { greska = "Korisnicko ime je zauzeto." });
 
-                    if (Baza.Postoji("Email", email))
+                    if (zauzeto == Baza.EmailZauzet)
                         return Results.Conflict(new { greska = "Email je vec registrovan." });
 
                     // --- hash sifre ---
@@ -91,8 +97,8 @@ namespace TeslaBet
                     string putanjaZadnja  = await Baza.SacuvajFajlAsync(fZadnja,  username, "zadnja");
 
                     // --- upis u bazu ---
-                    Baza.UbaciKorisnika(ime, prezime, username, email, zemlja,
-                                        hash, salt, putanjaPrednja, putanjaZadnja);
+                    await Baza.UbaciKorisnikaAsync(ime, prezime, username, email, zemlja,
+                                              hash, salt, putanjaPrednja, putanjaZadnja);
 
                     return Results.Ok(new
                     {
@@ -108,7 +114,7 @@ namespace TeslaBet
             });
 
             // ---- API endpoint: PRIJAVA (NOVO) ----
-            app.MapPost("/api/prijava", (PrijavaZahtev zahtev) =>
+            app.MapPost("/api/prijava", async (PrijavaZahtev zahtev) =>
             {
                 try
                 {
@@ -118,23 +124,18 @@ namespace TeslaBet
                     if (unos == "" || sifra == "")
                         return Results.BadRequest(new { greska = "Unesite korisnicko ime ili email i sifru." });
 
-                    // Trazimo korisnika po username-u ILI email-u
-                    if (!Baza.NadjiZaPrijavu(unos, out string username, out string ime,
-                                             out string hash, out string salt))
-                    {
-                        // Ista poruka za "nema korisnika" i "pogresna sifra" (ne odajemo sta postoji)
-                        return Results.Json(new { greska = "Pogresno korisnicko ime/email ili sifra." },
-                                            statusCode: 401);
-                    }
+                    // Trazimo korisnika po username-u ILI email-u.
+                    // Ista poruka za "nema korisnika" i "pogresna sifra" (ne odajemo sta postoji)
+                    var korisnik = await Baza.NadjiZaPrijavuAsync(unos);
 
-                    if (!Baza.ProveriSifru(sifra, hash, salt))
+                    if (korisnik == null || !Baza.ProveriSifru(sifra, korisnik.Hash, korisnik.Salt))
                         return Results.Json(new { greska = "Pogresno korisnicko ime/email ili sifra." },
                                             statusCode: 401);
 
                     return Results.Ok(new
                     {
                         poruka = "Uspesna prijava!",
-                        korisnik = new { username = username, ime = ime }
+                        korisnik = new { username = korisnik.Username, ime = korisnik.Ime }
                     });
                 }
                 catch (Exception ex)

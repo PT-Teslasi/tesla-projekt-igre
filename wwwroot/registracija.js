@@ -44,33 +44,11 @@ fileInput.addEventListener("change", () => {
     fileUpload.style.borderColor = "#FFD700";
 });
 
-// ---- Prikaz poruke ----
-function prikaziPoruku(tekst, tip = "error") {
-    let box = document.querySelector(".js-poruka");
-    if (!box) {
-        box = document.createElement("p");
-        box.className = "js-poruka";
-        box.style.cssText =
-            "margin-top:14px;padding:12px 14px;border-radius:8px;" +
-            "font-size:12px;font-weight:600;line-height:1.5;";
-        submitBtn.insertAdjacentElement("afterend", box);
-    }
-    box.textContent = tekst;
-    box.style.background = tip === "error"
-        ? "rgba(255, 60, 60, 0.12)" : "rgba(60, 220, 120, 0.12)";
-    box.style.color = tip === "error" ? "#ff6b6b" : "#4ade80";
-    box.style.border = tip === "error"
-        ? "1px solid rgba(255,60,60,0.35)" : "1px solid rgba(60,220,120,0.35)";
-}
-
-function ocistiPoruku() {
-    const box = document.querySelector(".js-poruka");
-    if (box) box.remove();
-}
-
-function oznacPolje(el, greska) {
-    if (el) el.style.borderColor = greska ? "#ff6b6b" : "";
-}
+// ---- Poruke (zajednicki pomocnici iz forme-zajednicko.js) ----
+const { prikaziPoruku, ocistiPoruku } = napraviPoruke(
+    box => submitBtn.insertAdjacentElement("afterend", box),
+    "margin-top:14px;"
+);
 
 // ---- Frontend validacija ----
 function validiraj() {
@@ -142,9 +120,8 @@ async function posalji() {
     podaci.append("licnaPrednja", fajlovi[0]);
     podaci.append("licnaZadnja",  fajlovi[1]);
 
-    submitBtn.disabled = true;
-    const original = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Saljem... <i class="fa-solid fa-spinner fa-spin"></i>';
+    const otkljucaj = zakljucajDugme(
+        submitBtn, 'Saljem... <i class="fa-solid fa-spinner fa-spin"></i>');
 
     try {
         const odgovor = await fetch(API_URL, { method: "POST", body: podaci });
@@ -172,8 +149,7 @@ async function posalji() {
         prikaziPoruku("Server nije dostupan. Proveri da li API radi.", "error");
         console.error(e);
     } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = original;
+        otkljucaj();
     }
 }
 
@@ -185,11 +161,3 @@ form.addEventListener("keydown", (e) => {
         posalji();
     }
 });
-
-let matchOdds = document.getElementsByClassName("match-odd");
-console.log(matchOdds);
-for(let i = 0; i< matchOdds.length; i++) {
-    matchOdds[i].addEventListener("click", function(){
-        this.classList.add("active");
-    })
-}
